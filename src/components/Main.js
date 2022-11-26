@@ -19,10 +19,10 @@ class Main extends Component {
             
               <div className="card" style={{width: "40rem"}}>
                 <div className="card-body">
-                  <h5 className="card-title">{raiser.name}</h5>
-                  <h6 className="card-subtitle mb-2">{window.web3.utils.fromWei(raiser.AmountRequired.toString(), 'Ether')} Eth</h6>
-                  <h6 className="card-subtitle mb-2">{window.web3.utils.fromWei(raiser.AmountAlreadyRaised.toString(), 'Ether')} Eth</h6>
-                  <p className="card-text">{raiser.description}</p>
+                  <h5 className="card-title">Name: {raiser.name}</h5>
+                  <h6 className="card-subtitle mb-2">Funds to be raised:  {window.web3.utils.fromWei(raiser.AmountRequired.toString(), 'Ether')} Eth</h6>
+                  <h6 className="card-subtitle mb-2">Funds already raised: {window.web3.utils.fromWei(raiser.AmountAlreadyRaised.toString(), 'Ether')} Eth</h6>
+                  <p className="card-text"> Description: {raiser.description}</p>
                   <div>
                   </div>
                 </div>
@@ -68,7 +68,7 @@ class Main extends Component {
               type="text"
               ref={(input) => { this.raiserPrice = input }}
               className="form-control"
-              placeholder="Amount to raise"
+              placeholder="Funds to raise"
               required />
           </div>
           <button type="submit" className="btn btn-primary">Create Fund Raiser</button>
@@ -151,11 +151,11 @@ class Main extends Component {
               <div className="col-6 my-4" key={key}>
               <div className="card" style={{width: "40rem"}}>
                 <div className="card-body">
-                  <h5 className="card-title">{raiser.name}</h5>
-                  <h6 className="card-subtitle mb-2 text-muted">{raiser.UserAccount}</h6>
-                  <h6 className="card-subtitle mb-2">{window.web3.utils.fromWei(raiser.AmountRequired.toString(), 'Ether')} Eth</h6>
-                  <h6 className="card-subtitle mb-2">{window.web3.utils.fromWei(raiser.AmountAlreadyRaised.toString(), 'Ether')} Eth</h6>
-                  <p className="card-text">{raiser.description}</p>
+                  <h5 className="card-title">Name: {raiser.name}</h5>
+                  <h6 className="card-subtitle mb-2 text-muted">Fund raiser address: {raiser.UserAccount}</h6>
+                  <h6 className="card-subtitle mb-2">Funds to be raised: {window.web3.utils.fromWei(raiser.AmountRequired.toString(), 'Ether')} Eth</h6>
+                  <h6 className="card-subtitle mb-2">Funds already raised: {window.web3.utils.fromWei(raiser.AmountAlreadyRaised.toString(), 'Ether')} Eth</h6>
+                  <p className="card-text">Description: {raiser.description}</p>
                   <div>
                   <form style={{display: "flex"}} onSubmit={(event) => {
                         event.preventDefault()
@@ -170,7 +170,7 @@ class Main extends Component {
                             type="text"
                             ref={(input) => { this.donPrice = input }}
                             className="form-control"
-                            placeholder="Amount to Donate"
+                            placeholder="Funds to Donate"
                             style={{width: "25vw"}}
                             required
                              />
