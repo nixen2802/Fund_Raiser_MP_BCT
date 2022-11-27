@@ -152,12 +152,13 @@ class Main extends Component {
               <div className="card" style={{width: "40rem"}}>
                 <div className="card-body">
                   <h5 className="card-title">Name: {raiser.name}</h5>
+                  <h6 className="card-subtitle mb-2 text-muted">ID: {key}</h6>
                   <h6 className="card-subtitle mb-2 text-muted">Fund raiser address: {raiser.UserAccount}</h6>
                   <h6 className="card-subtitle mb-2">Funds to be raised: {window.web3.utils.fromWei(raiser.AmountRequired.toString(), 'Ether')} Eth</h6>
                   <h6 className="card-subtitle mb-2">Funds already raised: {window.web3.utils.fromWei(raiser.AmountAlreadyRaised.toString(), 'Ether')} Eth</h6>
                   <p className="card-text">Description: {raiser.description}</p>
                   <div>
-                  <form style={{display: "flex"}} onSubmit={(event) => {
+                  {/*<form style={{display: "flex"}} onSubmit={(event) => {
                         event.preventDefault()
                         const name = raiser.id
                         const amountToRaise = this.donPrice.value.toString()
@@ -174,7 +175,7 @@ class Main extends Component {
                             style={{width: "25vw"}}
                             required
                              />
-                        </div>
+                    </div>*/}
                         <div className="form-group mr-sm-2">
                         {this.props.account !=  raiser.UserAccount ? (
                           !raiser.raised?
@@ -185,7 +186,7 @@ class Main extends Component {
                         <button type="submit" className="btn btn-primary" disabled>Your own raiser</button>
                       }
                         </div>
-                      </form>
+                      {/*</form>*/}
                   </div>
                 </div>
                 </div>
@@ -194,6 +195,39 @@ class Main extends Component {
           })}
           </div>
         </div>
+        <form style={{display: "flex"}} onSubmit={(event) => {
+          event.preventDefault()
+          const name = this.idRaiser.value.toString()
+          const amountToRaise = this.donPrice.value.toString()
+          const val = ethers.utils.parseUnits(amountToRaise, "ether");
+          this.props.donateRaiser(name, val)
+        }}>
+          <div className="form-group mr-sm-2">
+          <input
+              id="idRaiser"
+              type="text"
+              ref={(input) => { this.idRaiser = input }}
+              className="form-control"
+              placeholder="ID"
+              style={{width: "25vw"}}
+              required
+               />
+               </div>
+               <div className="form-group mr-sm-2">
+            <input
+              id="donPrice"
+              type="text"
+              ref={(input) => { this.donPrice = input }}
+              className="form-control"
+              placeholder="Funds to Donate"
+              style={{width: "25vw"}}
+              required
+               />
+          </div>
+          <div className="form-group mr-sm-2">
+          <button type="submit" className="btn btn-primary">Donate</button>
+          </div>
+          </form>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
           View Your Fund Raisers
         </button><br></br><br></br>
